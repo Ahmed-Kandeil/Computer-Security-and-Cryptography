@@ -100,6 +100,7 @@ class PlayfairCipher:
         Returns:
             tuple: The row and column coordinates.
         """
+
         if not char.isalpha():
             return
 
@@ -242,15 +243,11 @@ def main() -> None:
             encrypter.key = new_key
             continue
 
-        result = []
-
-        for text in text_tokens:
-            result.append(FUNCTIONS.get(option_num, quit)(text))
-
-        result = " ".join(result)
+        result = " ".join(
+            [FUNCTIONS.get(option_num, quit)(text) for text in text_tokens]
+        )
 
         print(result)
-
         input("Press Enter to continue...")
 
 
